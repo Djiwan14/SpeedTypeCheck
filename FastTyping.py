@@ -31,7 +31,7 @@ class FastTyping(Tk):
         self.start_word = Label(self, text="", font=("Arial", 20, "bold"), bg="#F56E14", fg="black")
         self.start_word.pack(pady=25)
         # Typing Entry
-        self.entry = Entry(width=35, height=20, font=("Arial", 16))
+        self.entry = Entry(width=35,font=("Arial", 16))
         self.entry.pack(pady=10)
         self.entry.bind("<Return>", self.check_word)
         # Result label
@@ -50,7 +50,7 @@ class FastTyping(Tk):
 
     def check_word(self, event):
         typed_phrase = self.entry.get().strip()
-        if typed_phrase == self.current_word:
+        if typed_phrase == self.current_word.lower():
             elapsed_time = time.time() - self.start_time
             typing_speed = int(len(self.current_word) / (elapsed_time/60))
             self.result_label.config(text=f"Your speed is {typing_speed} per minute", fg="black")
